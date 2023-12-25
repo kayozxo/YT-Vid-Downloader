@@ -8,6 +8,8 @@ Use [**pyinstaller**](https://pypi.org/project/pyinstaller/) to make it an execu
 <br>
 ## Used Packages:
 <br>
-1. [**pytube**](https://pypi.org/project/pytube/7.0.16/) 
-2. [**tkinter**](https://docs.python.org/3/library/tkinter.html)
-3. [**customtkinter**](https://pypi.org/project/customtkinter/0.3/)
+[**pytube**](https://pypi.org/project/pytube/7.0.16/) 
+<br>
+[**tkinter**](https://docs.python.org/3/library/tkinter.html)
+<br>
+[**customtkinter**](https://pypi.org/project/customtkinter/0.3/)
