@@ -6,10 +6,10 @@ A simple python GUI application, which can be used to download YouTube Videos at
 Use [**pyinstaller**](https://pypi.org/project/pyinstaller/) to make it an executable file.
 <br>
 <br>
-## Used Packages:
+## Used Packages
 <br>
-[**pytube**](https://pypi.org/project/pytube/7.0.16/) 
+1. [**pytube**](https://pypi.org/project/pytube/7.0.16/) 
 <br>
-[**tkinter**](https://docs.python.org/3/library/tkinter.html)
+2. [**tkinter**](https://docs.python.org/3/library/tkinter.html)
 <br>
-[**customtkinter**](https://pypi.org/project/customtkinter/0.3/)
+3. [**customtkinter**](https://pypi.org/project/customtkinter/0.3/)
