@@ -17,6 +17,8 @@ def download_video():
       finishLabel.configure(text=f"Selected Folder: {save_path}", text_color="white")
       highest_res_stream.download(output_path=save_path)
       finishLabel.configure(text="Video Downloaded Successfully!", text_color="white") 
+      root = tk.Tk()
+      root.withdraw()
       
   except Exception:
     title.configure(text="YT Video Downloader")
@@ -61,9 +63,6 @@ progNum.pack()
 progBar = customtkinter.CTkProgressBar(app, width=400)
 progBar.set(0)
 progBar.pack(padx=10, pady=10)
-
-root = tk.Tk()
-root.withdraw()
 
 # download button
 download = customtkinter.CTkButton(app, text="Download", command= download_video, corner_radius=5, fg_color="#1f538d")
