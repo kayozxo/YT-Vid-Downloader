@@ -44,29 +44,29 @@ app.geometry("720x480")
 app.title("YT Downloader")
 
 # adding ui elements
-title = customtkinter.CTkLabel(app, text="YT Video Downloader", font=("Montserrat", 15))
-title.pack(padx=10, pady=10)
+title = customtkinter.CTkLabel(app, text="YT-VIDEO DOWNLOADER", font=("Montserrat", 20, "bold"))
+title.pack(padx=10, pady=50)
 
 # link input
 url_var = tk.StringVar()
-link = customtkinter.CTkEntry(app, placeholder_text='Enter URL', width=350, height=40, textvariable=url_var)
+link = customtkinter.CTkEntry(app, placeholder_text='Enter URL', width=350, height=40, textvariable=url_var, font=("Montserrat", 13), corner_radius=5)
 link.pack()
 
 # finish label
-finishLabel = customtkinter.CTkLabel(app, text="")
+finishLabel = customtkinter.CTkLabel(app, text="", font=("Montserrat", 12))
 finishLabel.pack()
 
 # prog bar
-progNum = customtkinter.CTkLabel(app, text="0%")
-progNum.pack()
+progNum = customtkinter.CTkLabel(app, text="0%", font=("Montserrat", 15))
+progNum.pack(padx=0, pady=15)
 
-progBar = customtkinter.CTkProgressBar(app, width=400)
+progBar = customtkinter.CTkProgressBar(app, width=400, height=2)
 progBar.set(0)
-progBar.pack(padx=10, pady=10)
+progBar.pack(padx=10, pady=0)
 
 # download button
-download = customtkinter.CTkButton(app, text="Download", command= download_video, corner_radius=5, fg_color="#1f538d")
-download.pack(padx=0, pady=10)
+download = customtkinter.CTkButton(app, text="Download", command= download_video, corner_radius=5, fg_color="#1f538d", font=("Montserrat", 12))
+download.pack(padx=0, pady=50)
 
 # run app
 app.mainloop() 
