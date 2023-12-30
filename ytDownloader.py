@@ -3,19 +3,29 @@ import tkinter as tk
 import customtkinter
 from tkinter import filedialog
 
-def download_video():
+def download_video(choice):
   try:
     ytlink = link.get()
     ytobject = YouTube(ytlink, on_progress_callback=on_prog)
     streams = ytobject.streams.filter(progressive=True, file_extension="mp4")
-    highest_res_stream = streams.get_highest_resolution()
+
+    if choice == options[0]:
+      r360 = streams.filter(res="360p").first()
+      DS = r360
+    elif choice == options[1]:
+      r720 = streams.filter(res="720p").first()
+      DS = r720
+    else:
+      highest_res_stream = streams.get_highest_resolution()
+      DS = highest_res_stream
+
     title.configure(text=ytobject.title, text_color="white")
 
     save_path = filedialog.askdirectory()
     if save_path:
       finishLabel.configure(text="")
       finishLabel.configure(text=f"Selected Folder: {save_path}", text_color="white")
-      highest_res_stream.download(output_path=save_path)
+      DS.download(output_path=save_path)
       finishLabel.configure(text="Video Downloaded Successfully!", text_color="white") 
       root = tk.Tk()
       root.withdraw()
@@ -47,26 +57,37 @@ app.title("YT Downloader")
 title = customtkinter.CTkLabel(app, text="YT-VIDEO DOWNLOADER", font=("Montserrat", 20, "bold"))
 title.pack(padx=10, pady=50)
 
+uv = customtkinter.CTkLabel(app, text="Enter URL", font=("Montserrat", 12, "bold"))
+uv.pack(padx=10, pady=0)
+
 # link input
 url_var = tk.StringVar()
-link = customtkinter.CTkEntry(app, placeholder_text='Enter URL', width=350, height=40, textvariable=url_var, font=("Montserrat", 13), corner_radius=5)
-link.pack()
+link = customtkinter.CTkEntry(app, width=350, height=40, textvariable=url_var, font=("Montserrat", 13), corner_radius=5)
+link.pack(padx=1, pady=10)
+
+
 
 # finish label
 finishLabel = customtkinter.CTkLabel(app, text="", font=("Montserrat", 12))
-finishLabel.pack()
+finishLabel.pack(padx=1, pady=10)
 
 # prog bar
 progNum = customtkinter.CTkLabel(app, text="0%", font=("Montserrat", 15))
-progNum.pack(padx=0, pady=15)
+progNum.pack(padx=1, pady=0)
 
 progBar = customtkinter.CTkProgressBar(app, width=400, height=2)
 progBar.set(0)
-progBar.pack(padx=10, pady=0)
+progBar.pack(padx=10, pady=15)
 
 # download button
-download = customtkinter.CTkButton(app, text="Download", command= download_video, corner_radius=5, fg_color="#1f538d", font=("Montserrat", 12))
-download.pack(padx=0, pady=50)
+# res selection
+rs = customtkinter.CTkLabel(app, text="Select Resolution", font=("Montserrat", 12, "bold"))
+rs.pack(padx=1, pady=10)
+
+
+options = ["Download 360p", "Download 720p", "Download 1080p"]
+res_selection = customtkinter.CTkComboBox(master=app, values=options, width=200, height=30, font=("Montserrat", 12), dropdown_font=("Montserrat", 12), corner_radius=5, state="readonly", command = download_video)
+res_selection.pack(padx=10, pady=0)
 
 # run app
 app.mainloop() 
