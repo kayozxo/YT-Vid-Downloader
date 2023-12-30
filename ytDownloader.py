@@ -21,8 +21,8 @@ def download_video():
       root.withdraw()
       
   except Exception:
-    title.configure(text="YT Video Downloader")
-    finishLabel.configure(text="Invalid URL", text_color="red")
+    title.configure(text="YT-VIDEO DOWNLOADER")
+    finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat", 12))
 
 def on_prog(stream, chunk, bytes_rem):
   total_size = stream.filesize
