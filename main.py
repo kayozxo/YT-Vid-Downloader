@@ -74,11 +74,11 @@ customtkinter.set_default_color_theme("theme.json")
 
 # app frame
 app = customtkinter.CTk()
-app.geometry("720x480")
+app.geometry("800x500")
 app.title("YT Downloader")
 
 # adding ui elements
-title = customtkinter.CTkLabel(app, text="YT-VIDEO DOWNLOADER", font=("Montserrat", 20, "bold"))
+title = customtkinter.CTkLabel(app, text="YT-VIDEO DOWNLOADER", font=("Montserrat Black", 20))
 title.pack(padx=10, pady=30, anchor=tk.CENTER)
 
 uv = customtkinter.CTkLabel(app, text="Enter URL", font=("Montserrat", 12, "bold"))
@@ -92,11 +92,11 @@ link.pack(padx=1, pady=10, anchor=tk.CENTER)
 
 
 # finish label
-finishLabel = customtkinter.CTkLabel(app, text="", font=("Montserrat", 12))
+finishLabel = customtkinter.CTkLabel(app, text="", font=("Montserrat Medium", 12))
 finishLabel.pack(padx=1, pady=10, anchor=tk.CENTER)
 
 # prog bar
-progNum = customtkinter.CTkLabel(app, text="0%", font=("Montserrat", 15))
+progNum = customtkinter.CTkLabel(app, text="0%", font=("Montserrat Medium", 15))
 progNum.pack(padx=1, pady=0, anchor=tk.CENTER)
 
 progBar = customtkinter.CTkProgressBar(app, width=400, height=2)
@@ -104,7 +104,7 @@ progBar.set(0)
 progBar.pack(padx=10, pady=15, anchor=tk.CENTER)
 
 #audio download
-ad = customtkinter.CTkButton(app, text="Download Audio", font=("Montserrat", 12), command = download_audio, corner_radius=5, width=150, height=30)
+ad = customtkinter.CTkButton(app, text="Download Audio", font=("Montserrat Medium", 12), command = download_audio, corner_radius=5, width=160, height=34)
 ad.pack(padx=1, pady=15, anchor=tk.CENTER)
 
 # res selection / download
@@ -112,7 +112,7 @@ rs = customtkinter.CTkLabel(app, text="Download Video", font=("Montserrat", 12, 
 rs.pack(padx=1, pady=10, anchor=tk.CENTER)
 
 options = ["Download 360p", "Download 720p", "Download 1080p"]
-res_selection = customtkinter.CTkComboBox(master=app, values=options, width=200, height=30, font=("Montserrat", 12), dropdown_font=("Montserrat", 12), corner_radius=5, state="readonly", command = download_video, justify="center")
+res_selection = customtkinter.CTkComboBox(master=app, values=options, width=160, height=34, font=("Montserrat Medium", 12), dropdown_font=("Montserrat Medium", 12), corner_radius=5, state="readonly", command = download_video, justify="center")
 res_selection.pack(padx=10, pady=0, anchor=tk.CENTER)
 
 # run app
