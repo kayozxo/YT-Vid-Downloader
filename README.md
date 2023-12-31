@@ -6,6 +6,7 @@ A simple python GUI application, which can be used - <br>
 
 Use [**pyinstaller**](https://pypi.org/project/pyinstaller/) to make it an executable file. <br> <br>
 
+## 💻 Screenshots
 ![Application Screenshot](app.png) <br>
 ![Audio Downloaded Successfully Screenshot](app1.png) <br> 
 ![Video Downloader Successfully Screenshot](app2.png) <br>
