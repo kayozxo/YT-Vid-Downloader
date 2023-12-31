@@ -28,8 +28,8 @@
     ]
   },
   "CTkButton": {
-    "corner_radius": 6,
-    "border_width": 2,
+    "corner_radius": 5,
+    "border_width": 1,
     "fg_color": [
       "#697b88",
       "#11202b"
@@ -64,8 +64,8 @@
     ]
   },
   "CTkEntry": {
-    "corner_radius": 6,
-    "border_width": 2,
+    "corner_radius": 10,
+    "border_width": 1,
     "fg_color": [
       "#a9b8c4",
       "#a9b8c4"
@@ -174,23 +174,23 @@
     ]
   },
   "CTkComboBox": {
-    "corner_radius": 6,
-    "border_width": 2,
+    "corner_radius": 5,
+    "border_width": 1,
     "fg_color": [
-      "#748498",
-      "#748498"
+      "#697b88",
+      "#11202b"
     ],
     "border_color": [
-      "#000000",
-      "#000000"
+      "#405366",
+      "#405366"
     ],
     "button_color": [
-      "#000000",
-      "#000000"
+      "#5e6b7c",
+      "#5e6b7c"
     ],
     "button_hover_color": [
-      "#5c636c",
-      "#5c636c"
+      "#758794",
+      "#404c59"
     ],
     "text_color": [
       "#ffffff",
