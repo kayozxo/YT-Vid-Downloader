@@ -70,7 +70,7 @@ def on_prog(stream, chunk, bytes_rem):
   
 # system settings
 customtkinter.set_appearance_mode("System") 
-customtkinter.set_default_color_theme("Anthracite.json")
+customtkinter.set_default_color_theme("theme.json")
 
 # app frame
 app = customtkinter.CTk()
