@@ -3,6 +3,7 @@ import tkinter as tk
 import customtkinter
 from tkinter import filedialog
 import os
+import subprocess
 
 def download_video(choice):
   try:
@@ -28,8 +29,7 @@ def download_video(choice):
       finishLabel.configure(text=f"Selected Folder: {save_path}", text_color="white")
       DS.download(output_path=save_path)
       finishLabel.configure(text="Video Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12)) 
-      root = tk.Tk()
-      root.withdraw()
+      os.system('xdg-open "%s"' % save_path)
       
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
@@ -51,8 +51,7 @@ def download_audio():
       new_file = base + '.mp3'
       os.rename(out_file, new_file) 
       finishLabel.configure(text="Audio Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12)) 
-      root = tk.Tk()
-      root.withdraw()
+      os.system('xdg-open "%s"' % save_path)
       
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
@@ -66,7 +65,6 @@ def on_prog(stream, chunk, bytes_rem):
   progNum.configure(text=per + "%")
   progNum.update()
   progBar.set(float(percentage_of_completion / 100))
-  
   
 # system settings
 customtkinter.set_appearance_mode("System") 
@@ -88,8 +86,6 @@ uv.pack(padx=10, pady=0, anchor=tk.CENTER)
 url_var = tk.StringVar()
 link = customtkinter.CTkEntry(app, width=350, height=40, textvariable=url_var, font=("Montserrat", 13), corner_radius=5)
 link.pack(padx=1, pady=10, anchor=tk.CENTER)
-
-
 
 # finish label
 finishLabel = customtkinter.CTkLabel(app, text="", font=("Montserrat Medium", 12))
