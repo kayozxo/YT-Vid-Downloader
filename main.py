@@ -27,13 +27,13 @@ def download_video(choice):
       finishLabel.configure(text="")
       finishLabel.configure(text=f"Selected Folder: {save_path}", text_color="white")
       DS.download(output_path=save_path)
-      finishLabel.configure(text="Video Downloaded Successfully!", text_color="white") 
+      finishLabel.configure(text="Video Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12)) 
       root = tk.Tk()
       root.withdraw()
       
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
-    finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat", 12))
+    finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat Medium", 12))
 
 def download_audio():
   try:
@@ -50,13 +50,13 @@ def download_audio():
       base, ext = os.path.splitext(out_file) 
       new_file = base + '.mp3'
       os.rename(out_file, new_file) 
-      finishLabel.configure(text="Audio Downloaded Successfully!", text_color="white") 
+      finishLabel.configure(text="Audio Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12)) 
       root = tk.Tk()
       root.withdraw()
       
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
-    finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat", 12))
+    finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat Medium", 12))
 
 def on_prog(stream, chunk, bytes_rem):
   total_size = stream.filesize
