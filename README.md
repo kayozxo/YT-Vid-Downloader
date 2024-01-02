@@ -9,10 +9,10 @@ Use [**pyinstaller**](https://pypi.org/project/pyinstaller/) to make it an execu
 ## 💻 Screenshots
 <div align="center">
 <div>
-<img src="screenshots/app.png" width="45%" />
-<img src="screenshots/app1.png" width="45%" />
-<img src="screenshots/app2.png" width="45%" />
-<img src="screenshots/app3.png" width="45%" />
+<img src="screenshots/app.png" width="50%" />
+<img src="screenshots/app1.png" width="50%" />
+<img src="screenshots/app2.png" width="50%" />
+<img src="screenshots/app3.png" width="50%" />
 </div>
 </div>
 
