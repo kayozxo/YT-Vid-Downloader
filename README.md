@@ -15,7 +15,7 @@ Use [**pyinstaller**](https://pypi.org/project/pyinstaller/) to make it an execu
 <img src="screenshots/app1.png" width="45%" />
 <img src="screenshots/app2.png" width="45%" />
 <img src="screenshots/app3.png" width="45%" />
-<img src="screenshots/app4.png" width="45%" />
+<img src="screenshots/app5.png" width="45%" />
 </div>
 </div>
 
