@@ -3,6 +3,8 @@ import tkinter as tk
 import customtkinter
 from tkinter import filedialog
 import os
+from sys import platform
+import subprocess
 
 def download_video(choice):
   try:
@@ -28,8 +30,14 @@ def download_video(choice):
       finishLabel.configure(text=f"Selected Folder: {save_path}", text_color="white")
       DS.download(output_path=save_path)
       finishLabel.configure(text="Video Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12)) 
-      os.system('xdg-open "%s"' % save_path)
 
+      if platform == 'darwin':
+        subprocess.Popen(["open", save_path])
+      elif platform == 'win32':
+        os.startfile(save_path)
+      else:
+        os.system('xdg-open "%s"' % save_path)
+        
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
     finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat Medium", 12))
@@ -50,7 +58,13 @@ def download_audio():
       new_file = base + '.mp3'
       os.rename(out_file, new_file) 
       finishLabel.configure(text="Audio Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12)) 
-      os.system('xdg-open "%s"' % save_path)
+
+      if platform == 'darwin':
+        subprocess.Popen(["open", save_path])
+      elif platform == 'win32':
+        os.startfile(save_path)
+      else:
+        os.system('xdg-open "%s"' % save_path)
       
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
