@@ -108,7 +108,7 @@ finishLabel.place(x=400, y=240, anchor="center")
 progNum = customtkinter.CTkLabel(app, text="0%", font=("Montserrat", 12, "bold"))
 progNum.place(x=555, y=107, anchor="center")
 
-progBar = customtkinter.CTkProgressBar(app, width=800, height=2)
+progBar = customtkinter.CTkProgressBar(app, width=800, height=5)
 progBar.set(0)
 progBar.place(x=0, y=0)
 
