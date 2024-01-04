@@ -20,7 +20,8 @@ A simple python GUI application, which can be used - <br/><br/>
 > -> Now enter the command `pyinstaller --onefile main.py` <br/>
 > -> After running the command, pyinstaller will do it's job and make additional folders in your folder. <br/>
 > -> In these additional folders, you only need ***dist*** folder, which contains the executable/app. <br/>
-<br/><br/>
+
+<br/>
 
 ## 💻 Screenshots
 
