@@ -3,7 +3,8 @@ A simple python GUI application, which can be used - <br/><br/>
 
 1. To download videos at different resolutions. <br/>
 2. To download audio of a particular video. 
-  
+<br/><br/>
+
 ## ✅ Installation Guide
 ### Step 1:
 > -> Make sure that ***latest version of python*** is installed in your computer. <br/>
@@ -19,6 +20,7 @@ A simple python GUI application, which can be used - <br/><br/>
 > -> Now enter the command `pyinstaller --onefile main.py` <br/>
 > -> After running the command, pyinstaller will do it's job and make additional folders in your folder. <br/>
 > -> In these additional folders, you only need ***dist*** folder, which contains the executable/app. <br/>
+<br/><br/>
 
 ## 💻 Screenshots
 
