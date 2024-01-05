@@ -3,8 +3,8 @@ import tkinter as tk
 import customtkinter
 from tkinter import filedialog
 import os
-from sys import platform
-import subprocess
+import re
+import webbrowser
 
 def download_video(choice):
   try:
@@ -29,15 +29,8 @@ def download_video(choice):
       finishLabel.configure(text="")
       finishLabel.configure(text=f"Selected Folder: {save_path}", text_color="white")
       DS.download(output_path=save_path)
-      finishLabel.configure(text="Video Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12)) 
+      finishLabel.configure(text="Video Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12))
 
-      if platform == 'darwin':
-        subprocess.Popen(["open", save_path])
-      elif platform == 'win32':
-        os.startfile(save_path)
-      else:
-        os.system('xdg-open "%s"' % save_path)
-        
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
     finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat Medium", 12))
@@ -54,18 +47,25 @@ def download_audio():
       finishLabel.configure(text="")
       finishLabel.configure(text=f"Selected Folder: {save_path}", text_color="white")
       out_file = audio.download(output_path=save_path)
-      base, ext = os.path.splitext(out_file) 
+      base, ext = os.path.splitext(out_file)
       new_file = base + '.mp3'
-      os.rename(out_file, new_file) 
-      finishLabel.configure(text="Audio Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12)) 
+      os.rename(out_file, new_file)
+      finishLabel.configure(text="Audio Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12))
 
-      if platform == 'darwin':
-        subprocess.Popen(["open", save_path])
-      elif platform == 'win32':
-        os.startfile(save_path)
-      else:
-        os.system('xdg-open "%s"' % save_path)
-      
+  except Exception:
+    title.configure(text="YT-VIDEO DOWNLOADER")
+    finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat Medium", 12))
+
+def download_thumbnail():
+  try:
+    ytlink = link.get()
+    ytobject = YouTube(ytlink)
+    title.configure(text=ytobject.title, text_color="white")
+    exp = "^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*"
+    s = re.findall(exp,ytlink)[0][-1]
+    thumbnail = f"https://i.ytimg.com/vi/{s}/maxresdefault.jpg"
+    webbrowser.open(thumbnail)
+
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
     finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat Medium", 12))
@@ -78,9 +78,9 @@ def on_prog(stream, chunk, bytes_rem):
   progNum.configure(text=per + "%")
   progNum.update()
   progBar.set(float(percentage_of_completion / 100))
-  
+
 # system settings
-customtkinter.set_appearance_mode("System") 
+customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("theme.json")
 
 # app frame
@@ -93,12 +93,12 @@ title = customtkinter.CTkLabel(app, text="YT-VIDEO DOWNLOADER", font=("Montserra
 title.place(x=400, y=50, anchor="center")
 
 uv = customtkinter.CTkLabel(app, text="Enter URL", font=("Montserrat", 12, "bold"))
-uv.place(x=220, y=95)
+uv.place(x=180, y=95)
 
 # link input
 url_var = tk.StringVar()
-link = customtkinter.CTkEntry(app, width=350, height=40, textvariable=url_var, font=("Montserrat", 13), corner_radius=5)
-link.place(x=220, y=120)
+link = customtkinter.CTkEntry(app, width=450, height=40, textvariable=url_var, font=("Montserrat", 13), corner_radius=5)
+link.place(x=400, y=140, anchor="center")
 
 # finish label
 finishLabel = customtkinter.CTkLabel(app, text="", font=("Montserrat Medium", 12))
@@ -106,21 +106,23 @@ finishLabel.place(x=400, y=240, anchor="center")
 
 # prog bar
 progNum = customtkinter.CTkLabel(app, text="0%", font=("Montserrat", 12, "bold"))
-progNum.place(x=555, y=107, anchor="center")
-
+progNum.place(x=610, y=107, anchor="center")
 progBar = customtkinter.CTkProgressBar(app, width=800, height=5)
 progBar.set(0)
 progBar.place(x=0, y=0)
 
 #audio download
-ad = customtkinter.CTkButton(app, text="Download Audio", font=("Montserrat Medium", 12), command = download_audio, corner_radius=5, width=160, height=34)
-ad.place(x=220, y=170)
+ad = customtkinter.CTkButton(app, text="Download Audio", font=("Montserrat Medium", 12), command = download_audio, corner_radius=5, width=140, height=34)
+ad.place(x=175, y=170)
 
 # res selection / download
-
 options = ["Download 360p", "Download 720p", "Download 1080p"]
-res_selection = customtkinter.CTkComboBox(master=app, values=options, width=160, height=34, font=("Montserrat Medium", 12), dropdown_font=("Montserrat Medium", 12), corner_radius=5, state="readonly", command = download_video, justify="center")
-res_selection.place(x=410, y=170)
+res_selection = customtkinter.CTkComboBox(master=app, values=options, width=140, height=34, font=("Montserrat Medium", 12), dropdown_font=("Montserrat Medium", 12), corner_radius=5, state="readonly", command = download_video, justify="center")
+res_selection.place(x=330, y=170)
+
+# thumbnail download
+td = customtkinter.CTkButton(app, text="Download Image", font=("Montserrat Medium", 12), command = download_thumbnail, corner_radius=5, width=140, height=34)
+td.place(x=485, y=170)
 
 # run app
-app.mainloop() 
+app.mainloop()
