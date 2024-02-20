@@ -1,32 +1,66 @@
-# YouTube Video & Audio Downloader
+# YouTube Downloader
 
-A simple python GUI application, which can be used - <br/><br/>
+[![Build Status](https://travis-ci.org/kayozxo/YouTube-Downloader.svg?branch=main)](https://travis-ci.org/kayozxo/YouTube-Downloader)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-1. To download videos at different resolutions. <br/>
-2. To download audio of a particular video.
-   <br/><br/>
+## Description
 
-## ✅ Installation Guide
+YouTube Downloader is a simple Python application that allows you to download YouTube videos in multiple resolutions, download thumbnails in JPG format, and extract audio in MP3 format.
 
-### Step 1:
+## Table of Contents
 
-> -> Make sure that **_latest version of python_** is installed in your computer. <br/>
-> -> To check if python is installed or not : Enter `python --version` in your command prompt. <br/>
-> -> If error occurs, download it from [**here.**](https://www.python.org/downloads/)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Dependencies](#dependencies)
+- [License](#license)
 
-### Step 2:
+## Installation
 
-> -> After installing python successfully, now download the contents in the `main` folder from above. **_(Make sure that these three files are in the same folder)_** <br/>
-> -> Navigate to the folder in command prompt by `cd folder_name` and enter `pip install -r requirements.txt`
+Ensure you have Python installed on your machine. Clone the repository and install the required dependencies.
 
-### Step 3:
+```bash
+# Clone the repository
+git clone https://github.com/kayozxo/YouTube-Downloader.git
 
-> -> Now enter the command `pyinstaller --onefile main.py` <br/>
-> -> After running the command, pyinstaller will do it's job and make additional folders in your folder. <br/>
-> -> In these additional folders, you only need **_dist_** folder, which contains the executable/app. <br/>
-> -> Now drag the **_main.exe_** file, into the parent folder (or out of the dist folder into the main folder), and you're good to go!<br/>
+# Navigate to the project directory
+cd YouTube-Downloader/main
 
-<br/>
+# Install dependencies
+pip install -r requirements.txt
+```
+
+## Usage
+
+To use the YouTube Downloader, provide a YouTube video URL in the entry box and choose the desired download options (video resolution, audio, or thumbnail).
+
+```bash
+# Run the application
+python main.py
+```
+
+## Features
+
+- Download YouTube videos in multiple resolutions.
+- Download thumbnails in JPG format.
+- Extract audio in MP3 format.
+
+## Dependencies
+
+Ensure you have the following dependencies installed:
+
+- [customtkinter](https://pypi.org/project/customtkinter/)==5.2.1
+- [pytube](https://pypi.org/project/pytube/)==15.0.0
+
+You can install them using:
+
+```bash
+pip install customtkinter==5.2.1 pytube==15.0.0
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 💻 Screenshots
 
@@ -42,5 +76,3 @@ A simple python GUI application, which can be used - <br/><br/>
 <img  src="screenshots/app5.png"  width="45%" />
 </div>
 </div>
-
-<br>
