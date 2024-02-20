@@ -14,6 +14,7 @@ YouTube Downloader is a simple Python application that allows you to download Yo
 - [Features](#features)
 - [Dependencies](#dependencies)
 - [License](#license)
+- [Screenshots](#screenshots)
 
 ## Installation
 
@@ -60,7 +61,7 @@ pip install customtkinter==5.2.1 pytube==15.0.0
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 💻 Screenshots
 
