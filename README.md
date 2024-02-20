@@ -63,7 +63,7 @@ pip install customtkinter==5.2.1 pytube==15.0.0
 
 This project is licensed under the MIT License.
 
-## 💻 Screenshots
+## Screenshots
 
 <div  align="center">
 <img  src="screenshots/app.png"  width="95%" />
