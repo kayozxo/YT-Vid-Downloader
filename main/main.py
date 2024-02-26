@@ -5,6 +5,8 @@ from tkinter import filedialog
 import os
 import re
 import webbrowser
+from CTkMessagebox import CTkMessagebox
+from CTkToolTip import *
 
 def download_video(choice):
   try:
@@ -29,11 +31,11 @@ def download_video(choice):
       finishLabel.configure(text="")
       finishLabel.configure(text=f"Selected Folder: {save_path}", text_color="white")
       DS.download(output_path=save_path)
-      finishLabel.configure(text="Video Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12))
+      CTkMessagebox(title="Success", message="Video is successfully downloaded.", icon="check")
 
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
-    finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat Medium", 12))
+    CTkMessagebox(title="Invalid URL!", message="Please Enter a Valid URL!", icon="cancel", option_1="Cancel", option_2="Retry")
 
 def download_audio():
   try:
@@ -50,11 +52,12 @@ def download_audio():
       base, ext = os.path.splitext(out_file)
       new_file = base + '.mp3'
       os.rename(out_file, new_file)
-      finishLabel.configure(text="Audio Downloaded Successfully!", text_color="white", font=("Montserrat Medium", 12))
+      CTkMessagebox(title="Succes", message="Audio is successfully downloaded.", icon="check")
+
 
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
-    finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat Medium", 12))
+    CTkMessagebox(title="Invalid URL!", message="Please Enter a Valid URL!", icon="cancel", option_1="Cancel", option_2="Retry")
 
 def download_thumbnail():
   try:
@@ -68,7 +71,8 @@ def download_thumbnail():
 
   except Exception:
     title.configure(text="YT-VIDEO DOWNLOADER")
-    finishLabel.configure(text="INVALID URL", text_color="red", font=("Montserrat Medium", 12))
+    CTkMessagebox(title="Invalid URL!", message="Please Enter a Valid URL!", icon="cancel", option_1="Cancel", option_2="Retry")
+
 
 def on_prog(stream, chunk, bytes_rem):
   total_size = stream.filesize
@@ -100,6 +104,7 @@ url_var = tk.StringVar()
 link = customtkinter.CTkEntry(app, width=450, height=40, textvariable=url_var, font=("Montserrat", 13), corner_radius=5)
 link.place(x=400, y=140, anchor="center")
 
+CTkToolTip(link, message="Paste a Valid YouTube Video URL!")
 # finish label
 finishLabel = customtkinter.CTkLabel(app, text="", font=("Montserrat Medium", 12))
 finishLabel.place(x=400, y=240, anchor="center")
@@ -115,14 +120,18 @@ progBar.place(x=0, y=0)
 ad = customtkinter.CTkButton(app, text="Download Audio", font=("Montserrat Medium", 12), command = download_audio, corner_radius=5, width=140, height=34)
 ad.place(x=175, y=170)
 
+CTkToolTip(ad, message="Download Audio at Highest Quality!")
 # res selection / download
 options = ["Download 360p", "Download 720p", "Download 1080p"]
 res_selection = customtkinter.CTkComboBox(master=app, values=options, width=140, height=34, font=("Montserrat Medium", 12), dropdown_font=("Montserrat Medium", 12), corner_radius=5, state="readonly", command = download_video, justify="center")
 res_selection.place(x=330, y=170)
 
+CTkToolTip(res_selection, message="Download Video at Multiple Resolutions!")
 # thumbnail download
 td = customtkinter.CTkButton(app, text="Download Image", font=("Montserrat Medium", 12), command = download_thumbnail, corner_radius=5, width=140, height=34)
 td.place(x=485, y=170)
+
+CTkToolTip(td, message="Download Thumbnail at Highest Quality!")
 
 # run app
 app.mainloop()
