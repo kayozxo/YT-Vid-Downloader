@@ -92,6 +92,8 @@ app = customtkinter.CTk()
 app.geometry("800x500")
 app.title("YT Downloader")
 
+app.resizable(False, False)
+
 # adding ui elements
 title = customtkinter.CTkLabel(app, text="YT-VIDEO DOWNLOADER", font=("Montserrat Black", 20))
 title.place(x=400, y=50, anchor="center")
