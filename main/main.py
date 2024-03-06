@@ -1,10 +1,7 @@
 from pytube import YouTube
 import tkinter as tk
-import customtkinter
+import customtkinter, os, re, webbrowser
 from tkinter import filedialog
-import os
-import re
-import webbrowser
 from CTkMessagebox import CTkMessagebox
 from CTkToolTip import *
 
