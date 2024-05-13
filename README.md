@@ -38,6 +38,7 @@ To use the YouTube Downloader, provide a YouTube video URL in the entry box and 
 ```bash
 # Run the desktop application
 python main.py
+
 # Run the web application
 streamlit run app.py
 ```
