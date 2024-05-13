@@ -36,8 +36,10 @@ pip install -r requirements.txt
 To use the YouTube Downloader, provide a YouTube video URL in the entry box and choose the desired download options (video resolution, audio, or thumbnail).
 
 ```bash
-# Run the application
+# Run the desktop application
 python main.py
+# Run the web application
+streamlit run app.py
 ```
 
 ## Features
