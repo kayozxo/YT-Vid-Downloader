@@ -1,28 +1,53 @@
 import streamlit as st
 from pytube import YouTube
 import os
+import streamlit_shadcn_ui as ui
+from googleapiclient.discovery import build
+from pytube import extract
 
 directory= 'downloads/'
 if not os.path.exists(directory):
     os.makedirs(directory)
 
-def get_info(url):
-    yt = YouTube(url)
-    details= {}
-    details["image"] = yt.thumbnail_url
-    details["title"] = yt.title
-    details["length"] = yt.length
-    return details
-
 st.set_page_config(page_title="YouTube Downloader", page_icon=":zap:")
+
 st.title(":zap: YouTube Downloader")
-url = st.text_input("**Paste URL here 👇**", placeholder="https://www.youtube.com/")
+st.markdown("Paste URL here")
+url = ui.input(placeholder="https://www.youtube.com/", key="url", type="text")
 
 code = """
 <a href="https://www.buymeacoffee.com/kayozxo" target="_blank"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=kayozxo&button_colour=40DCA5&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
 """
+def get_info(url):
+    yt = YouTube(url)
 
+    video_id = extract.video_id(url)
+
+    youtube = build('youtube', 'v3', developerKey='AIzaSyC54QjnV9FiDRyvwu2_JLoJgnmWq4VoLdo')
+
+    video_request = youtube.videos().list(
+        part='snippet,statistics',
+        id=video_id
+    )
+    video_response = video_request.execute()
+
+    print(video_response)
+
+    details = {
+        "image": yt.thumbnail_url,
+        "title": yt.title,
+        "length": yt.length,
+        "likes": 'N/A',  # default value
+        "views": 'N/A'   # default value
+    }
+
+    if 'items' in video_response and len(video_response['items']) > 0:
+        video_details = video_response['items'][0]['statistics']
+        details["likes"] = video_details.get('likeCount', 'N/A')
+        details["views"] = video_details.get('viewCount', 'N/A')
+
+    return details
 
 def download_video():
   with st.spinner("Downloading..."):
@@ -54,12 +79,28 @@ def download_audio():
       st.warning("Invalid URL!")
 
 col1, col2 = st.columns(2)
-col1.button("Download Video :film_frames:", on_click=download_video, use_container_width=True)
-col2.button("Download Audio :musical_note:", on_click=download_audio, use_container_width=True)
+with col1:
+  vid_btn = ui.button("Download Video", variant="secondary", key="vid_btn", class_name="w-full")
+
+with col2:
+  aud_btn = ui.button("Download Audio", variant="secondary", key="aud_btn", class_name="w-full")
+
+if vid_btn:
+  download_video()
+
+if aud_btn:
+  download_audio()
 
 if url:
     v_info = get_info(url)
-    st.image(v_info["image"], use_column_width=True, caption=f"{v_info['title']} - {v_info['length']} seconds")
+    st.image(v_info["image"], use_column_width=True, caption=f"{v_info['title']}")
+    cols = st.columns(3)
+    with cols[0]:
+      ui.metric_card(title="Total Views", content=f"{v_info['views']}")
+    with cols[1]:
+      ui.metric_card(title="Total Likes", content=f"{v_info['likes']}")
+    with cols[2]:
+      ui.metric_card(title="Video Length", content=f"{v_info['length']} sec")
 
 with st.sidebar:
   st.html(code)
